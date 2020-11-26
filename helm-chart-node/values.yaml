@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: pkterraform/node-web-app
+  repository: bitnami/node-example
   tag: latest
   pullPolicy: IfNotPresent
 
