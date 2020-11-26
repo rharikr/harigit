@@ -12,6 +12,18 @@ variable "map_accounts" {
   ]
 }
 
+variable "istio_namespace" {
+  default = "istio-system"
+}
+
+variable "istio_version" {
+  default = "1.4.0"
+}
+
+variable "istio_url_version" {
+  default = "https://github.com/helm/charts/tree/master/incubator/istio/"
+}
+
 variable "map_roles" {
   description = "Additional IAM roles to add to the aws-auth configmap."
   type = list(object({
