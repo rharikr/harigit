@@ -5,6 +5,10 @@ provider "helm" {
 }
 data "helm_repository" "istio" {
     name = "istio"
+    url  = "${var.app_url_version}"
+}
+data "helm_repository" "app" {
+    name = "istio"
     url  = "${var.istio_url_version}"
 }
 resource "helm_release" "istio_init" {
@@ -37,4 +41,11 @@ resource "helm_release" "istio" {
      name="gateways.istio-ingressgateway.type"
      value="NodePort"
   }
+}
+resource "helm_release" "myexpress-app" {
+  name  = "mydatabase"
+  repository = "${data.helm_repository.app.url}"
+  chart      = "myexpress-app"
+  version    = "${var.app_version}"
+  namespace  = "${var.app_namespace}"
 }
