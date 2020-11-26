@@ -1,3 +1,8 @@
+provider "helm" {
+  kubernetes {
+    config_path = "/path/to/kube_cluster.yaml"
+  }
+}
 data "helm_repository" "istio" {
     name = "istio"
     url  = "${var.istio_url_version}"
